@@ -6,7 +6,7 @@ body {
   margin: 0 auto;
   box-sizing: border-box;
   border: 1px solid black;
-  height: 1200px;
+  height: 600px;
   width: 900px;
   position: relative;
 }
@@ -25,5 +25,14 @@ body {
   width: 60px;
   position: absolute;
   bottom: 0;
+  left: 10px;
+}
+
+.shot {
+  width: 6px;
+  height: 30px;
+  background: white;
+  position: absolute;
+  bottom: 20px;
   left: 10px;
 }
