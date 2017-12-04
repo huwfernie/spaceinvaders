@@ -27,14 +27,24 @@ $(() => {
 
   function moveRight(){
     console.log('moveRight');
-    me.xPos++;
-    updatePosn();
+    if(me.xPos < 840) {
+      me.xPos = me.xPos + 10;
+      updatePosn();
+    } else {
+      me.xPos = 840;
+      updatePosn();
+    }
   }
 
   function moveLeft(){
     console.log('moveRight');
-    me.xPos--;
-    updatePosn();
+    if(me.xPos >= 10) {
+      me.xPos = me.xPos - 10;
+      updatePosn();
+    } else {
+      me.xPos = 0;
+      updatePosn();
+    }
   }
 
   function updatePosn(){
