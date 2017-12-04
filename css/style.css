@@ -1,0 +1,28 @@
+body {
+  background-color: lightsalmon;
+}
+
+.board {
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 1px solid black;
+  height: 1200px;
+  width: 900px;
+  position: relative;
+}
+.square {
+  box-sizing: border-box;
+  border: 1px solid grey;
+  height: 30px;
+  width: 30px;
+}
+
+.me {
+  box-sizing: border-box;
+  border: 1px solid grey;
+  background: yellow;
+  height: 30px;
+  width: 60px;
+  position: absolute;
+  bottom: 0;
+}
