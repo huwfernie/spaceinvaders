@@ -71,12 +71,15 @@ $(() => {
         let height = $(shots[0]).css('bottom');
         console.log('height',height);
         height = parseInt(height.split('px')[0]);
-        height = height + 10;
+        height = height + 20;
         $(shots[0]).css('bottom',`${height}px`);
-        j++;
+        if(height >=570) {
+          $(shots[0]).remove();
+          shootsOnScreen--;
+        }
       }
       updateShot();
-    }, 1000);
+    }, 500);
   }
 
   function updatePosn(){
