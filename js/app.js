@@ -66,16 +66,20 @@ $(() => {
     setTimeout(function() {
       const shots = document.getElementsByClassName('shot');
       if(shootsOnScreen) {
-        console.log(shots[0]);
-        let height = $(shots[0]).css('bottom');
-        console.log('height',height);
-        height = parseInt(height.split('px')[0]);
-        height = height + 20;
-        $(shots[0]).css('bottom',`${height}px`);
-        if(height >=570) {
-          $(shots[0]).remove();
-          shootsOnScreen--;
+        for(let i=0; i<shots.length; i++) {
+          // console.log(shots[i]);
+          let height = $(shots[i]).css('bottom');
+          console.log('shot',i,' height',height);
+          height = parseInt(height.split('px')[0]);
+          height = height + 20;
+          $(shots[i]).css('bottom',`${height}px`);
+          if(height >=570) {
+            $(shots[i]).remove();
+            shootsOnScreen--;
+          }
         }
+      } else {
+        return console.log('no-shots');
       }
       updateShot();
     }, 50);
