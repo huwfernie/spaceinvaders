@@ -62,15 +62,21 @@ $(() => {
     return updateShot();
   }
 
+  let j = 0;
   function updateShot() {
-    const shots = document.getElementsByClassName('shot');
-    if(shootsOnScreen) {
-      console.log(shots);
-      shots.forEach((shot)=>{
-        console.log(shot);
-      });
-      setTimeout(updateShot(),5000);
-    }
+    setTimeout(function() {
+      const shots = document.getElementsByClassName('shot');
+      if(shootsOnScreen && j<10) {
+        console.log(shots[0]);
+        let height = $(shots[0]).css('bottom');
+        console.log('height',height);
+        height = parseInt(height.split('px')[0]);
+        height = height + 10;
+        $(shots[0]).css('bottom',`${height}px`);
+        j++;
+      }
+      updateShot();
+    }, 1000);
   }
 
   function updatePosn(){
