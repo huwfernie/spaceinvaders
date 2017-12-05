@@ -62,11 +62,10 @@ $(() => {
     return updateShot();
   }
 
-  let j = 0;
   function updateShot() {
     setTimeout(function() {
       const shots = document.getElementsByClassName('shot');
-      if(shootsOnScreen && j<10) {
+      if(shootsOnScreen) {
         console.log(shots[0]);
         let height = $(shots[0]).css('bottom');
         console.log('height',height);
@@ -79,7 +78,7 @@ $(() => {
         }
       }
       updateShot();
-    }, 500);
+    }, 50);
   }
 
   function updatePosn(){
