@@ -59,7 +59,11 @@ $(() => {
     document.getElementsByClassName('board')[0].appendChild(shot);
     shotCounter++;
     shootsOnScreen++;
-    return updateShot();
+    if(shootsOnScreen > 1){
+      return;
+    } else {
+      return updateShot();
+    }
   }
 
   function updateShot() {
