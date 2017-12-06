@@ -58,7 +58,11 @@ $(() => {
     shot.id = `id="shot${shotCounter}`;
     shot.style.left = `${me.xPos+30}px`;
     document.getElementsByClassName('board')[0].appendChild(shot);
-    shotCounter++;
+    if(shotCounter >= 50) {
+      shotCounter = 0;
+    } else {
+      shotCounter++;
+    }
     shootsOnScreen++;
     if(shootsOnScreen > 1){
       return;
@@ -75,6 +79,7 @@ $(() => {
           // console.log(shots[i]);
           let height = $(shots[i]).css('bottom');
           let left = $(shots[i]).css('left');
+          left = parseInt(left.split('px')[0]);
           console.log('shot',i,' height',height,' left',left);
           height = parseInt(height.split('px')[0]);
           height = height + 20;
@@ -90,6 +95,15 @@ $(() => {
 
   function deleteShot(shotHeight,shotLeft,shot){
     if(shotHeight >=570) {
+      $(shot).remove();
+      shootsOnScreen--;
+    }
+    if(
+      ( shotLeft>=45 && shotLeft<= 129 && shotHeight >= 70) ||
+      ( shotLeft>=225 && shotLeft<= 308 && shotHeight >= 70) ||
+      ( shotLeft>=403 && shotLeft<= 488 && shotHeight >= 70) ||
+      ( shotLeft>=582 && shotLeft<= 667 && shotHeight >= 70) ||
+      ( shotLeft>=763 && shotLeft<= 846 && shotHeight >= 70) ){
       $(shot).remove();
       shootsOnScreen--;
     }
