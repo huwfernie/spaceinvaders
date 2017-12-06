@@ -32,7 +32,7 @@ $(() => {
   function moveRight(){
     console.log('moveRight');
     if(me.xPos < 840) {
-      me.xPos = me.xPos + 10;
+      me.xPos = me.xPos + 20;
       updatePosn();
     } else {
       me.xPos = 840;
@@ -43,7 +43,7 @@ $(() => {
   function moveLeft(){
     console.log('moveRight');
     if(me.xPos >= 10) {
-      me.xPos = me.xPos - 10;
+      me.xPos = me.xPos - 20;
       updatePosn();
     } else {
       me.xPos = 0;
@@ -56,6 +56,7 @@ $(() => {
     const shot = document.createElement('div');
     shot.className = 'shot';
     shot.id = `id="shot${shotCounter}`;
+    shot.style.left = `${me.xPos+30}px`;
     document.getElementsByClassName('board')[0].appendChild(shot);
     shotCounter++;
     shootsOnScreen++;
