@@ -13,18 +13,18 @@ $(() => {
     const keyName = event.key;
     if (keyName === 'ArrowLeft') {
       console.log('left');
+      if(!gameInPlay){return aliens()}
       gameInPlay = true;
-      aliens();
       return moveLeft();
     } else if (keyName === 'ArrowRight') {
       console.log('right');
+      if(!gameInPlay){aliens()}
       gameInPlay = true;
-      aliens();
       return moveRight();
     } else if (keyName === ' ') {
       console.log('space');
+      if(!gameInPlay){aliens()}
       gameInPlay = true;
-      aliens();
       return shoot();
     } else {
       console.log('other Key',keyName);
@@ -124,6 +124,8 @@ $(() => {
   /* ---------- /
     Aliens
   / ---------- */
+
+  let thisWay = 1;
   function aliens(){
     setTimeout(function() {
       if(gameInPlay) {
@@ -132,9 +134,12 @@ $(() => {
         if(aliensOnScreen) {
           let left = $(alien).css('margin-left');
           left = parseInt(left.split('px')[0]);
-          left = left + 10;
+          left = left + (10 * thisWay);
+          if(left>=200 || left <=10) {
+            thisWay = thisWay * -1;
+          }
           $(alien).css('margin-left',`${left}px`);
-          $(alien).css('background',`red`);
+          // $(alien).css('background',`red`);
           // deleteShot(height,left,aliens[i]);
         }
       } else {
