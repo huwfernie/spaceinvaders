@@ -135,8 +135,9 @@ $(() => {
           let left = $(alien).css('margin-left');
           left = parseInt(left.split('px')[0]);
           left = left + (10 * thisWay);
-          if(left>=200 || left <=10) {
+          if(left>=200 || left <=20) {
             thisWay = thisWay * -1;
+            newLine();
           }
           $(alien).css('margin-left',`${left}px`);
           // $(alien).css('background',`red`);
@@ -146,9 +147,19 @@ $(() => {
         return console.log('no-aliens');
       }
       aliens();
-    }, 500);
+    }, 250);
   }
 
+  function newLine(){
+    console.log('newline');
+    const aliens = document.getElementsByClassName('alien');
+    for(let i=0; i<aliens.length; i++){
+      const alien = aliens[i];
+      let height = $(alien).css('margin-top');
+      height = parseInt(height.split('px')[0]);
+      $(alien).css('margin-top',`${height+10}px`);
+    }
+  }
 
 
 });
