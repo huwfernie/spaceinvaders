@@ -6,17 +6,25 @@ $(() => {
   const $me = document.getElementById('me');
   let shotCounter = 0;
   let shootsOnScreen = 0;
+  let aliensOnScreen = 10;
+  let gameInPlay = false;
 
   document.addEventListener('keydown', (event) =>{
     const keyName = event.key;
     if (keyName === 'ArrowLeft') {
       console.log('left');
+      gameInPlay = true;
+      aliens();
       return moveLeft();
     } else if (keyName === 'ArrowRight') {
       console.log('right');
+      gameInPlay = true;
+      aliens();
       return moveRight();
     } else if (keyName === ' ') {
       console.log('space');
+      gameInPlay = true;
+      aliens();
       return shoot();
     } else {
       console.log('other Key',keyName);
@@ -112,5 +120,30 @@ $(() => {
   function updatePosn(){
     $me.style.left = `${me.xPos}px`;
   }
+
+  /* ---------- /
+    Aliens
+  / ---------- */
+  function aliens(){
+    setTimeout(function() {
+      if(gameInPlay) {
+        console.log('let\'s go aliens!');
+        const alien = document.getElementById('invader1');
+        if(aliensOnScreen) {
+          let left = $(alien).css('margin-left');
+          left = parseInt(left.split('px')[0]);
+          left = left + 10;
+          $(alien).css('margin-left',`${left}px`);
+          $(alien).css('background',`red`);
+          // deleteShot(height,left,aliens[i]);
+        }
+      } else {
+        return console.log('no-aliens');
+      }
+      aliens();
+    }, 500);
+  }
+
+
 
 });
