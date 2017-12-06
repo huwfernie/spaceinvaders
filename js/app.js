@@ -74,20 +74,25 @@ $(() => {
         for(let i=0; i<shots.length; i++) {
           // console.log(shots[i]);
           let height = $(shots[i]).css('bottom');
-          console.log('shot',i,' height',height);
+          let left = $(shots[i]).css('left');
+          console.log('shot',i,' height',height,' left',left);
           height = parseInt(height.split('px')[0]);
           height = height + 20;
           $(shots[i]).css('bottom',`${height}px`);
-          if(height >=570) {
-            $(shots[i]).remove();
-            shootsOnScreen--;
-          }
+          deleteShot(height,left,shots[i]);
         }
       } else {
         return console.log('no-shots');
       }
       updateShot();
     }, 50);
+  }
+
+  function deleteShot(shotHeight,shotLeft,shot){
+    if(shotHeight >=570) {
+      $(shot).remove();
+      shootsOnScreen--;
+    }
   }
 
   function updatePosn(){
