@@ -8,7 +8,7 @@ $(() => {
   let shotsOnScreen = 0;
   let aliensOnScreen = 10;
   let gameInPlay = false;
-  const timer = 50;
+  const timer = 100;
 
   /* ---------- /
     Key inputs
@@ -141,8 +141,8 @@ $(() => {
         (alienVisible === 'visible') &&
         (shotLeft >= alienLeft + 18 ) &&
         (shotLeft <= alienLeft + 50 ) &&
-        (shotHeight-120 >= alienBottom) &&
-        (shotHeight-120 <= alienBottom + 20)
+        (shotHeight-170 >= alienBottom) &&
+        (shotHeight-170 <= alienBottom + 20)
       ) {
         $(shot).remove();
         shotsOnScreen--;
@@ -205,7 +205,7 @@ $(() => {
 
 
   function newLine(){
-    console.log('newline');
+    //console.log('newline');
     const aliens = document.getElementsByClassName('alien');
     for(let i=0; i<aliens.length; i++){
       const alien = aliens[i];
