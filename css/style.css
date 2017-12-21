@@ -14,7 +14,7 @@ body {
 
 .sky {
   box-sizing: border-box;
-  border: 1px solid blue;
+  border: 0px solid blue;
   height: 340px;
   width: 100%;
   position: relative;
@@ -27,10 +27,12 @@ body {
 }
 
 .alien {
+  font-size: 0;
   box-sizing: border-box;
-  border: 1px solid white;
-  background: white;
-  height: 30px;
+  border: 0px solid white;
+  background-image: url("../assets/alien.jpg");
+  background-size: cover;
+  height: 20px;
   width: 30px;
   margin: 0 20px;
   position: absolute;
@@ -63,20 +65,22 @@ body {
 }
 
 .me {
+  background-image: url("../assets/me2.png");
+  background-size: cover;
   box-sizing: border-box;
-  border: 1px solid grey;
-  background: yellow;
+  border: 0px solid grey;
   height: 30px;
   width: 60px;
   position: absolute;
   bottom: 0;
-  left: 10px;
+  left: 145px;
 }
 
 .shot {
   width: 6px;
-  height: 30px;
+  height: 5px;
   background: white;
+  background: #73f440;
   position: absolute;
   bottom: 20px;
   left: 10px;
