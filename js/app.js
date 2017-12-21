@@ -9,21 +9,30 @@ $(() => {
   let aliensOnScreen = 10;
   let gameInPlay = false;
 
+  /* ---------- /
+    Key inputs
+  / ---------- */
   document.addEventListener('keydown', (event) =>{
     const keyName = event.key;
     if (keyName === 'ArrowLeft') {
       console.log('left');
-      if(!gameInPlay){return aliens()}
+      if(!gameInPlay) {
+        return aliens();
+      }
       gameInPlay = true;
       return moveLeft();
     } else if (keyName === 'ArrowRight') {
       console.log('right');
-      if(!gameInPlay){aliens()}
+      if(!gameInPlay){
+        aliens();
+      }
       gameInPlay = true;
       return moveRight();
     } else if (keyName === ' ') {
       console.log('space');
-      if(!gameInPlay){aliens()}
+      if(!gameInPlay){
+        aliens();
+      }
       gameInPlay = true;
       return shoot();
     } else {
@@ -31,6 +40,9 @@ $(() => {
     }
   });
 
+  /* ---------- /
+    Players ship
+  / ---------- */
 
   const me = {};
   me.xPos = 15;
@@ -58,6 +70,10 @@ $(() => {
       updatePosn();
     }
   }
+
+  /* ---------- /
+    Shooting
+  / ---------- */
 
   function shoot(){
     console.log(shotCounter);

@@ -6,20 +6,15 @@ body {
   margin: 0 auto;
   box-sizing: border-box;
   border: 1px solid black;
+  background: black;
   height: 600px;
   width: 900px;
   position: relative;
 }
-.square {
-  box-sizing: border-box;
-  border: 1px solid grey;
-  height: 30px;
-  width: 30px;
-}
 
 .sky {
   box-sizing: border-box;
-  border: 1px solid blue;
+  border: 0px solid blue;
   height: 340px;
   width: 100%;
   position: absolute;
@@ -32,7 +27,8 @@ body {
 }
 .sky ul li{
   box-sizing: border-box;
-  border: 1px solid blue;
+  border: 1px solid white;
+  background: white;
   height: 30px;
   width: 30px;
   margin: 0 20px;
@@ -45,7 +41,7 @@ body {
 
 .street {
   box-sizing: border-box;
-  border: 1px solid grey;
+  border: 0px solid grey;
   height: 60px;
   width: 100%;
   position: absolute;
@@ -59,6 +55,7 @@ body {
 .street ul li{
   box-sizing: border-box;
   border: 1px solid grey;
+  background: grey;
   height: 60px;
   width: 10%;
   margin: 0 5%;
