@@ -18,21 +18,21 @@ $(() => {
     if (keyName === 'ArrowLeft') {
       // console.log('left');
       if(!gameInPlay) {
-        return aliens();
+        return update();
       }
       gameInPlay = true;
       return moveLeft();
     } else if (keyName === 'ArrowRight') {
       // console.log('right');
       if(!gameInPlay){
-        aliens();
+        update();
       }
       gameInPlay = true;
       return moveRight();
     } else if (keyName === ' ') {
       // console.log('space');
       if(!gameInPlay){
-        aliens();
+        update();
       }
       gameInPlay = true;
       return shoot();
@@ -46,7 +46,7 @@ $(() => {
   / ---------- */
 
   const me = {};
-  me.xPos = 165;
+  me.xPos = 15;
   me.yPos = 0;
 
 
@@ -77,8 +77,8 @@ $(() => {
   / ---------- */
 
   function shoot(){
-    if(shotsOnScreen<=5){
-      console.log(shotsOnScreen);
+    if(shotsOnScreen<3){
+      // console.log(shotsOnScreen);
       const shot = document.createElement('div');
       shot.className = 'shot';
       shot.id = `id="shot${shotCounter}`;
@@ -90,39 +90,30 @@ $(() => {
       } else {
         shotCounter++;
       }
-      if(shotsOnScreen >= 1){
-        return updateShot();
-      } else {
-        return;
-      }
+      return;
     } else {
-      console.log('too many shots');
+      //console.log('too many shots');
     }
   }
 
-  function updateShot() {
-    setTimeout(function() {
-      if(gameInPlay) {
-        const shots = document.getElementsByClassName('shot');
-        if(shotsOnScreen) {
-          for(let i=0; i<shots.length; i++) {
-            // console.log(shots[i]);
-            let height = $(shots[i]).css('bottom');
-            let left = $(shots[i]).css('left');
-            left = parseInt(left.split('px')[0]);
-            //console.log('shot',i,' height',height,' left',left);
-            height = parseInt(height.split('px')[0]);
-            height = height + 20;
-            $(shots[i]).css('bottom',`${height}px`);
-            const aliens = document.getElementsByClassName('alien');
-            deleteShot(height,left,shots[i],aliens);
-          }
-        } else {
-          return console.log('no-shots');
-        }
-        updateShot();
+  function updateShot(){
+    const shots = document.getElementsByClassName('shot');
+    if(shotsOnScreen) {
+      for(let i=0; i<shots.length; i++) {
+        // console.log(shots[i]);
+        let height = $(shots[i]).css('bottom');
+        let left = $(shots[i]).css('left');
+        left = parseInt(left.split('px')[0]);
+        //console.log('shot',i,' height',height,' left',left);
+        height = parseInt(height.split('px')[0]);
+        height = height + 20;
+        $(shots[i]).css('bottom',`${height}px`);
+        const aliens = document.getElementsByClassName('alien');
+        deleteShot(height,left,shots[i],aliens);
       }
-    }, timer*2);
+    } else {
+      return; //console.log('no-shots');
+    }
   }
 
   function deleteShot(shotHeight,shotLeft,shot,aliens){
@@ -175,39 +166,43 @@ $(() => {
 
   let thisWay = 1;
   let firstAlienLine = true;
-  function aliens(){
+  function update(){
     setTimeout(function() {
       if(gameInPlay) {
-        // console.log('let\'s go aliens!');
-        const firstAlien = document.getElementById('invader1');
-        let firstLeft = $(firstAlien).css('left');
-        firstLeft = parseInt(firstLeft.split('px')[0]);
-        if(firstLeft >= 200) {
-          thisWay = -1;
-          firstAlienLine = false;
-          newLine();
-        } else if(firstLeft<=10){
-          thisWay = 1;
-          if(firstAlienLine === false){
-            newLine();
-          }
-        }
-        if(aliensOnScreen >= 1) {
-          const aliens = document.getElementsByClassName('alien');
-          for(let i=0; i<aliens.length; i++){
-            const alien = aliens[i];
-            // console.log(alien);
-            let left = $(alien).css('left');
-            left = parseInt(left.split('px')[0]);
-            $(alien).css('left',`${left+(5*thisWay)}px`);
-          }
-        }
-      } else {
-        return console.log('no-aliens');
+        updateShot();
+        updateAlien();
       }
-      aliens();
-    }, (timer));
+      update();
+    }, timer);
   }
+
+  function updateAlien(){
+    // console.log('let\'s go aliens!');
+    const firstAlien = document.getElementById('invader1');
+    let firstLeft = $(firstAlien).css('left');
+    firstLeft = parseInt(firstLeft.split('px')[0]);
+    if(firstLeft >= 200) {
+      thisWay = -1;
+      firstAlienLine = false;
+      newLine();
+    } else if(firstLeft<=10) {
+      thisWay = 1;
+      if(firstAlienLine === false) {
+        newLine();
+      }
+    }
+    if(aliensOnScreen >= 1) {
+      const aliens = document.getElementsByClassName('alien');
+      for(let i=0; i<aliens.length; i++){
+        const alien = aliens[i];
+        // console.log(alien);
+        let left = $(alien).css('left');
+        left = parseInt(left.split('px')[0]);
+        $(alien).css('left',`${left+(5*thisWay)}px`);
+      }
+    }
+  }
+
 
   function newLine(){
     console.log('newline');
