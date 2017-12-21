@@ -8,6 +8,7 @@ $(() => {
   let shootsOnScreen = 0;
   let aliensOnScreen = 10;
   let gameInPlay = false;
+  const timer = 50;
 
   /* ---------- /
     Key inputs
@@ -114,7 +115,7 @@ $(() => {
         return console.log('no-shots');
       }
       updateShot();
-    }, 50);
+    }, timer);
   }
 
   function deleteShot(shotHeight,shotLeft,shot){
@@ -146,36 +147,45 @@ $(() => {
     setTimeout(function() {
       if(gameInPlay) {
         console.log('let\'s go aliens!');
-        const alien = document.getElementById('invader1');
-        if(aliensOnScreen) {
-          let left = $(alien).css('margin-left');
-          left = parseInt(left.split('px')[0]);
-          left = left + (10 * thisWay);
-          if(left>=200 || left <=20) {
-            thisWay = thisWay * -1;
-            newLine();
+        // const aliens = document.getElementsByClassName('alien');
+        const firstAlien = document.getElementById('invader1');
+        let firstLeft = $(firstAlien).css('left');
+        firstLeft = parseInt(firstLeft.split('px')[0]);
+        if(firstLeft >= 200) {
+          thisWay = -1;
+          // newLine();
+        } else if(firstLeft<=10){
+          thisWay = 1;
+          // newLine();
+        }
+        // $(firstAlien).css('left',`${firstLeft+(10*thisWay)}px`);
+        if(aliensOnScreen >= 1) {
+          const aliens = document.getElementsByClassName('alien');
+          for(let i=0; i<aliens.length; i++){
+            const alien = aliens[i];
+            console.log(alien);
+            let left = $(alien).css('left');
+            left = parseInt(left.split('px')[0]);
+            $(alien).css('left',`${left+(5*thisWay)}px`);
           }
-          $(alien).css('margin-left',`${left}px`);
-          // $(alien).css('background',`red`);
-          // deleteShot(height,left,aliens[i]);
         }
       } else {
         return console.log('no-aliens');
       }
       aliens();
-    }, 250);
+    }, (50));
   }
 
-  function newLine(){
-    console.log('newline');
-    const aliens = document.getElementsByClassName('alien');
-    for(let i=0; i<aliens.length; i++){
-      const alien = aliens[i];
-      let height = $(alien).css('margin-top');
-      height = parseInt(height.split('px')[0]);
-      $(alien).css('margin-top',`${height+10}px`);
-    }
-  }
+  // function newLine(){
+  //   console.log('newline');
+  //   const aliens = document.getElementsByClassName('alien');
+  //   for(let i=0; i<aliens.length; i++){
+  //     const alien = aliens[i];
+  //     let height = $(alien).css('margin-top');
+  //     height = parseInt(height.split('px')[0]);
+  //     $(alien).css('margin-top',`${height+10}px`);
+  //   }
+  // }
 
 
 });

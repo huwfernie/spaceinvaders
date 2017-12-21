@@ -14,29 +14,29 @@ body {
 
 .sky {
   box-sizing: border-box;
-  border: 0px solid blue;
+  border: 1px solid blue;
   height: 340px;
   width: 100%;
-  position: absolute;
+  position: relative;
   top: 100px;
 }
-.sky ul {
+.sky .allAliens {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.sky ul li{
+
+.alien {
   box-sizing: border-box;
   border: 1px solid white;
   background: white;
   height: 30px;
   width: 30px;
   margin: 0 20px;
-  float: left;
-}
-.alien {
-  float: left;
-  margin-top: 0;
+  position: absolute;
+  bottom: 310px;
+  left: 10px;
+  visibility: visible;
 }
 
 .street {
