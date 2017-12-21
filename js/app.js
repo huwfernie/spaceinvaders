@@ -18,6 +18,7 @@ $(() => {
     if (keyName === 'ArrowLeft') {
       // console.log('left');
       if(!gameInPlay) {
+        $('.instructions').css('visibility','hidden');
         return update();
       }
       gameInPlay = true;
@@ -25,6 +26,7 @@ $(() => {
     } else if (keyName === 'ArrowRight') {
       // console.log('right');
       if(!gameInPlay){
+        $('.instructions').css('visibility','hidden');
         update();
       }
       gameInPlay = true;
@@ -32,6 +34,7 @@ $(() => {
     } else if (keyName === ' ') {
       // console.log('space');
       if(!gameInPlay){
+        $('.instructions').css('visibility','hidden');
         update();
       }
       gameInPlay = true;
@@ -150,7 +153,7 @@ $(() => {
         aliensOnScreen--;
         if(aliensOnScreen<=0){
           gameInPlay=false;
-          alert('you win');
+          gameOver('you win');
         }
       }
     }
@@ -215,13 +218,18 @@ $(() => {
       if(gameInPlay && (bottom-20<0)){
         bottom = 0;
         gameInPlay=false;
-        alert('gameOver');
+        gameOver('Game Over');
       }
     }
   }
 
   /* ---------- /
-    Shooting Aliens
+    Game Over
   / ---------- */
+
+  function gameOver(message) {
+    $('.gameOver').css('visibility','visible');
+    $('#modalUpdate').html(message);
+  }
 
 });
