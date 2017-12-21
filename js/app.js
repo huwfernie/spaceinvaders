@@ -104,7 +104,7 @@ $(() => {
           let height = $(shots[i]).css('bottom');
           let left = $(shots[i]).css('left');
           left = parseInt(left.split('px')[0]);
-          console.log('shot',i,' height',height,' left',left);
+          //console.log('shot',i,' height',height,' left',left);
           height = parseInt(height.split('px')[0]);
           height = height + 20;
           $(shots[i]).css('bottom',`${height}px`);
