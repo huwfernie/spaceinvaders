@@ -153,7 +153,7 @@ $(() => {
         aliensOnScreen--;
         if(aliensOnScreen<=0){
           gameInPlay=false;
-          gameOver('you win');
+          gameOver('- You Win -');
         }
       }
     }
