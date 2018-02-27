@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/huwfernie/spaceinvaders/issues"
   },
-  "homepage": "https://github.com/huwfernie/spaceinvaders#readme"
+  "homepage": "https://github.com/huwfernie/spaceinvaders#readme",
+  "dependencies": {
+    "ejs": "^2.5.7"
+  }
 }
