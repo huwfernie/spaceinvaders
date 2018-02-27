@@ -1,0 +1,19 @@
+{
+  "name": "spaceinvaders",
+  "version": "1.0.0",
+  "description": "javascript game with simple node/heroku server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huwfernie/spaceinvaders.git"
+  },
+  "author": "Huw Fernie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huwfernie/spaceinvaders/issues"
+  },
+  "homepage": "https://github.com/huwfernie/spaceinvaders#readme"
+}
